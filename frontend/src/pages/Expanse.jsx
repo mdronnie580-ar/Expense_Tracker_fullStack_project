@@ -10,6 +10,10 @@ function Expanse() {
       const getExpense = async ()=>{
         try{
         const userId = localStorage.getItem('userId');
+        if(!userId || userId === "undifine"){
+          console.error("user id is missing .please login again");
+          return ;
+        }
         const response = await axios.get(`http://localhost:3000/api/expense?userId=${userId}`);
         setExpenses(response.data);
       }catch(err){

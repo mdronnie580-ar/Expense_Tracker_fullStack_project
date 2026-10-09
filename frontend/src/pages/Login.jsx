@@ -11,8 +11,9 @@ function Login() {
     e.preventDefault();
     try{
       const response = await axios.post("http://localhost:3000/api/auth/login",{email, password});
-      localStorage.setItem("userId", response.data.user.id);
       console.log(response.data);
+      localStorage.setItem("userId", response.data.user.id);
+      localStorage.setItem("userName", response.data.user.name);
       alert("login successfull");
       Navigate("/Dashboard")
       

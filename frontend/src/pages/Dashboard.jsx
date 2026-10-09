@@ -4,6 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTrendUp, faCircleUser, faHome } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 function Dashboard() {
+    // get date
+    const hour = new Date().getHours();
+    let greeting;
+    if(hour >= 5 && hour < 12) greeting = "Good Morning";
+    else if(hour >= 12 && hour < 17) greeting = "Good Afternoon";
+    else if(hour >= 17 && hour < 21) greeting = "Good Evening";
+    else greeting = "Good Night";
+    const userName = localStorage.getItem("userName");
   return (
     <div className='bg-gray-600  h-screen w-full flex flex-col p-1 justify-center items-center'>
         <div className='h-full  w-full rounded-lg bg-white  flex flex-col md:flex-row'>
@@ -21,7 +29,7 @@ function Dashboard() {
         <main className='bg-gray-100 w-full flex-1 p-3 md:p-6 overflow-auto flex flex-col gap-5'>
             {/* header sections */}
             <div className=' h-1/4 p-8 flex flex-col justify-center items-center text-2xl hover:shadow-xl rounded-lg bg-blue-600 text-gray-300'>
-                <h1>Good Morning Ronnie!</h1>
+                <h1>  {greeting} {userName}!</h1>
                 <p>Here's your expense overview.</p>
             </div>
             {/*expense details sections*/}

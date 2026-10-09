@@ -15,6 +15,8 @@ function Signup() {
             email,
             password,
           });
+          localStorage.setItem("userId", response.data.id);
+          localStorage.setItem("userName", response.data.name);
           setName("");
           setEmail("");
           setPassword("");
